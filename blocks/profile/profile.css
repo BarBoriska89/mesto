@@ -1,6 +1,5 @@
 .profile {
     max-width: 880px;
-   /* max-height: 120px;*/
     margin: 0 auto;
     display: grid;
     grid-template-columns: 120px 1fr 150px;
@@ -10,14 +9,12 @@
 @media (max-width: 1023px) {
     .profile {
         width: 90%;
-        /*height: min-content;*/
     }
 }
 
 @media (max-width: 650px) {
     .profile {
         width: 88.125%;
-        /*min-height: 300px;*/
         display: flex;
         flex-direction: column;
         align-content: center;

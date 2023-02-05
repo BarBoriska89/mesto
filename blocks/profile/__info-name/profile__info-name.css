@@ -1,5 +1,4 @@
-.profile__info-name {
-    font-family: 'Inter';
+.profile__info-name {   
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
@@ -12,14 +11,12 @@
     .profile__info-name {
         font-size: 27px;
         line-height: 33px;
-       
     }
 
 }
 
 @media (max-width: 650px) {
     .profile__info-name {
-       /* margin: 0 0 0 46px;*/
         text-align: right;
     }
 
@@ -28,8 +25,7 @@
 
 @media (max-width: 450px) {
     .profile__info-name {
-        margin-left: 0;
-        text-align: right;
+        margin-left: 0;       
     }
 
 }
