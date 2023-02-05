@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Хранилище интересных мест России">
+    <meta name="keywords" content="Фотографии живописных мест России">
+    <meta name="author" content="Надежда Борисова">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Место</title>
+</head>
+
+<body class="root">
+    <header class="header">
+        <a href="#" class="header__link">
+            <img src="./images/logo-white.svg" class="header__logo" alt="Логотип Место">
+        </a>
+    </header>
+
+    <section class="profile" aria-label="Профиль пользователя">
+        <img src="./images/avatar.png" class="profile__avatar" alt="Фото пользователя">
+        <div class="profile__info">
+            <p class="profile__info-name">Жак-Ив Кусто</p>
+            <button class="profile__info-edit-button button" type="button">
+                <img src="./images/Edit-Button.png" class="profile__info-button-img" alt="Изображение карандаша">
+            </button>
+            <p class="profile__info-profession">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button button" type="button">
+            <img src="./images/plus.svg" class="profile__add-button-img" alt="Плюс">
+        </button>
+    </section>
+
+
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__button-close button" type="button">
+                <img src="./images/Close-Icon.svg" alt="Крестик закрытия окна">
+            </button>
+            <form class="popup__form">
+                <p class="popup__title">Редактировать профиль</p>
+                <input type="text" value="Имя" class="popup__user-name">
+                <input type="text" value="Род деятельности" class="popup__user-profession">
+                <button class="popup__button-save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="elements" aria-label="Живописные места России">
+        <ul class="elements__list">
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-1088404-unsplash.png"
+                    alt="Старинный храм на горе">
+                <div class="element__caption">
+                    <p class="element__text">Карачаевск</p>
+                    <button class="element__like element__like_active" type="submit">
+                    </button>
+                </div>
+            </li>
+
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото горы вдали">
+                <div class="element__caption">
+                    <p class="element__text">Гора Эльбрус</p>
+                    <button class="element__like" type="submit">
+                    </button>
+                </div>
+            </li>
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-15556355-unsplash.png" alt="Гора Домбай">
+                <div class="element__caption">
+                    <p class="element__text">Домбай</p>
+                    <button class="element__like" type="submit">
+                    </button>
+                </div>
+            </li>
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото горы вдали">
+                <div class="element__caption">
+                    <p class="element__text">Гора Эльбрус</p>
+                    <button class="element__like" type="submit">
+                    </button>
+                </div>
+            </li>
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-15556355-unsplash.png" alt="Гора Домбай">
+                <div class="element__caption">
+                    <p class="element__text">Домбай</p>
+                    <button class="element__like" type="submit">
+                    </button>
+                </div>
+            </li>
+            <li class="element">
+                <img class="element__img" src="./images/kirill-pershin-1088404-unsplash.png"
+                    alt="Какая-то достопримечательность">
+                <div class="element__caption">
+                    <p class="element__text">Карачаево-Черкессия</p>
+                    <button class="element__like" type="submit">
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+    </footer>
+    <script src="./scritps/index.js"></script>
+</body>
+
+</html>
