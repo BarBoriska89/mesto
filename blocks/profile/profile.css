@@ -1,25 +1,30 @@
 .profile {
+    color: #fff;
     max-width: 880px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 120px 1fr 150px;
+    grid-template-columns: 120px 336px 1fr;
     gap: 30px;
 }
 
 @media (max-width: 1023px) {
     .profile {
-        width: 90%;
+        width: 95%;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
     .profile {
         width: 88.125%;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
+        grid-template-columns: 336px;
+        justify-items: center;
         justify-content: center;
-        align-items: center;
-        gap: 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .profile {
+        grid-template-columns: 282px;
+        gap: 25px;
     }
 }

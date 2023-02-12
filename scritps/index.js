@@ -1,36 +1,34 @@
 let container = document.querySelector('.profile__info');
-let UserName = container.querySelector('.profile__info-name');
-let UserProfession = container.querySelector('.profile__info-profession');
-let EditButton = container.querySelector('.profile__info-edit-button');
-let CloseButton = document.querySelector('.popup__button-close');
-let PopupClass = document.querySelector('.popup');
-let UserNamePopup = PopupClass.querySelector('.popup__user-name');
-let UserProfessionPopup = PopupClass.querySelector('.popup__user-profession');
-let SaveButton = PopupClass.querySelector('.popup__button-save');
+let userName = container.querySelector('.profile__info-name');
+let userProfession = container.querySelector('.profile__info-profession');
+let editButton = container.querySelector('.profile__info-edit-button');
+let closeButton = document.querySelector('.popup__button-close');
+let popupClass = document.querySelector('.popup');
+let popupForm = popupClass.querySelector('.popup__form');
+let userNamePopup = popupClass.querySelector('.popup__text_type_name');
+let userProfessionPopup = popupClass.querySelector('.popup__text_type_profession');
+let saveButton = popupClass.querySelector('.popup__button-save');
 
 
-function AddClassPopup() {
-    
-    if (PopupClass.classList.contains('popup_opened') === false) {
-        PopupClass.classList.add('popup_opened');
-        
+function addClassPopup() {
+
+    if (popupClass.classList.contains('popup_opened') === false) {
+        popupClass.classList.add('popup_opened');
+        userNamePopup.value = userName.textContent;
+        userProfessionPopup.value = userProfession.textContent;
     }
     else {
-        PopupClass.classList.remove('popup_opened');
-        
+        popupClass.classList.remove('popup_opened');
     }
 }
 
-function SaveValue(evt) {
-    evt.preventDefault(); 
-    UserName.textContent = UserNamePopup.value;
-    UserProfession.textContent = UserProfessionPopup.value;
+function saveValue(evt) {
+    evt.preventDefault();
+    userName.textContent = userNamePopup.value;
+    userProfession.textContent = userProfessionPopup.value;
+    addClassPopup();
 }
 
-UserNamePopup.value = UserName.textContent;
-UserProfessionPopup.value = UserProfession.textContent;
-
-
-EditButton.addEventListener('click', AddClassPopup);
-CloseButton.addEventListener('click', AddClassPopup);
-SaveButton.addEventListener('click', SaveValue);
+editButton.addEventListener('click', addClassPopup);
+closeButton.addEventListener('click', addClassPopup);
+popupForm.addEventListener('submit', saveValue);
