@@ -1,6 +1,6 @@
 .popup__button-save {
     cursor: pointer;
-    margin: 0 36px 37px 36px;
+    margin: 48px 36px 37px 36px;
     width: 358px;
     height: 50px;
     background-color: #000;
@@ -20,7 +20,7 @@
 
 @media (max-width: 550px) {
     .popup__button-save {
-        margin: 0 22px 25px 22px;
+        margin: 45px 22px 25px 22px;
         width: 238px;
         height: 46px;
         font-size: 14px;
