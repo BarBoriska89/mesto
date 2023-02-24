@@ -3,7 +3,7 @@
     background-color: transparent;
     position: absolute;
     top: -40px;
-    left: 438px;
+    right: -40px;
     padding: 0;
     border-width: 0;
 }
@@ -11,7 +11,7 @@
 @media (max-width: 550px) {
     .popup__button-close {
         top: -36px;
-        left: 262px;
+        right: 0px;
         max-width: 20px;
         max-height: 20px;
     }

@@ -38,65 +38,27 @@
 
         <section class="elements" aria-label="Живописные места России">
             <ul class="elements__list">
-                <li class="element">
-                    <img class="element__img" src="./images/kirill-pershin-1088404-unsplash.png"
-                        alt="Старинный храм на горе">
-                    <div class="element__caption">
-                        <h2 class="element__text">Карачаевск</h2>
-                        <button class="element__like element__like_active" type="button" aria-label="Нравится">
+                <template id="element-li">
+                    <li class="element">
+                        <img class="element__img" src="#" alt="#">
+                        <button class="element__trash" type="button" aria-label="Удалить">
                         </button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__img" src="./images/ricky-kharawala-adK3Vu70DEQ-unsplash.jpg" alt="Хомячок">
-                    <div class="element__caption">
-                        <h2 class="element__text">Ой, а тут Хомячок</h2>
-                        <button class="element__like" type="button" aria-label="Нравится">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__img" src="./images/kirill-pershin-15556355-unsplash.png" alt="Гора Домбай">
-                    <div class="element__caption">
-                        <h2 class="element__text">Домбай</h2>
-                        <button class="element__like" type="button" aria-label="Нравится">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__img" src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото горы вдали">
-                    <div class="element__caption">
-                        <h2 class="element__text">Гора Эльбрус</h2>
-                        <button class="element__like" type="button" aria-label="Нравится">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__img" src="./images/kirill-pershin-15556355-unsplash.png" alt="Гора Домбай">
-                    <div class="element__caption">
-                        <h2 class="element__text">Домбай</h2>
-                        <button class="element__like" type="button" aria-label="Нравится">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__img" src="./images/kirill-pershin-1088404-unsplash.png"
-                        alt="Какая-то достопримечательность">
-                    <div class="element__caption">
-                        <h2 class="element__text">Карачаево-Черкессия</h2>
-                        <button class="element__like" type="button" aria-label="Нравится">
-                        </button>
-                    </div>
-                </li>
+                        <div class="element__caption">
+                            <h2 class="element__text">#</h2>
+                            <button class="element__like" type="button" aria-label="Нравится">
+                            </button>
+                        </div>
+                    </li>
+                </template>
             </ul>
         </section>
     </main>
+
     <footer class="footer">
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup" id="popup-edit-profile">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                 <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
@@ -105,9 +67,35 @@
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input type="text" value="Имя" class="popup__text popup__text_type_name" name="user-name">
                 <input type="text" value="Род деятельности" class="popup__text popup__text_type_profession"
-                    name="user-job">                
+                    name="user-job">
                 <button class="popup__button-save" type="submit" aria-label="Сохранить изменения">Сохранить</button>
             </form>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-add-place">
+        <div class="popup__container">
+            <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
+                <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+            </button>
+            <form class="popup__form" name="add-place-form">
+                <h2 class="popup__title">Новое место</h2>
+                <input type="text" placeholder="Название" value="" class="popup__text popup__text_type_place"
+                    name="place-name">
+                <input type="text" placeholder="Ссылка на картинку" value=""
+                    class="popup__text popup__text_type_place-img" name="place-img">
+                <button class="popup__button-save" type="submit" aria-label="Сохранить изменения">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-view-img">
+        <div class="popup__view-container">
+            <figure class="popup__view">
+                <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
+                    <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+                </button>
+            </figure>
         </div>
     </div>
 
