@@ -63,7 +63,7 @@
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                 <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
-            <form class="popup__form" name="edit-form">
+            <form class="popup__form" id="edit-form">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input type="text" value="Имя" class="popup__text popup__text_type_name" name="user-name">
                 <input type="text" value="Род деятельности" class="popup__text popup__text_type_profession"
@@ -78,7 +78,7 @@
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                 <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
-            <form class="popup__form" name="add-place-form">
+            <form class="popup__form" id="add-place-form">
                 <h2 class="popup__title">Новое место</h2>
                 <input type="text" placeholder="Название" value="" class="popup__text popup__text_type_place"
                     name="place-name">
@@ -95,11 +95,13 @@
                 <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                     <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
                 </button>
+                <img class = "popup__view-img" src="#" alt="#">
+                <figcaption class = "popup__view-img_caption"></figcaption>
             </figure>
         </div>
     </div>
-
-    <script src="./scritps/index.js"></script>
+    <script src="./scritps/cards.js"></script>
+       <script src="./scritps/index.js"></script>
 </body>
 
 </html>
