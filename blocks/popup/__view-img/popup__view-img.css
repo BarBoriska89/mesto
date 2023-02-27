@@ -3,10 +3,3 @@
     max-width: 75vw;
     object-fit: cover;
 }
-/*
-@media(max-width: 850px) {
-    .popup__view-img {
-        width: 75vw;
-        height: 100%;
-    }
-}
