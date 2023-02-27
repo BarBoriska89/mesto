@@ -14,7 +14,7 @@ const addPlaceForm = document.querySelector('#add-place-form');
 
 const openImgContainer = document.querySelector('.popup__view');
 const popupOpenImgSrc = document.querySelector('.popup__view-img');
-const popupOpenImgName = document.querySelector('.popup__view-img_caption');
+const popupOpenImgName = document.querySelector('.popup__view-img-caption');
 
 const userNamePopup = popupEditProfile.querySelector('.popup__text_type_name');
 const userProfessionPopup = popupEditProfile.querySelector('.popup__text_type_profession');
