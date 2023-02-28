@@ -60,9 +60,9 @@ function createNewPlace(name, link) {
     evt.target.closest('.element').remove('element');
   });
   imgElement.addEventListener('click', (evt) => {
-    popupOpenImgSrc.src = evt.target.src;
-    popupOpenImgSrc.alt = evt.target.alt;
-    popupOpenImgName.textContent = evt.target.alt;
+    popupOpenImgSrc.src = link;
+    popupOpenImgSrc.alt = name;
+    popupOpenImgName.textContent = name;
     openPopup(popupViewPic);
   })
   return elementPlace;
@@ -81,12 +81,12 @@ initialCards.forEach((elem, index) => {
 
 addPlaceForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const placeName = popupAddPlace.querySelector('.popup__text_type_place').value;
-  const placeLink = popupAddPlace.querySelector('.popup__text_type_place-img').value;
-  if (placeName !== '' && placeLink !== '') {
-    renderCard(listOfPlaces, placeName, placeLink);
-    popupAddPlace.querySelector('.popup__text_type_place').value = '';
-    popupAddPlace.querySelector('.popup__text_type_place-img').value = '';
+  let placeName = popupAddPlace.querySelector('.popup__text_type_place');
+  let placeLink = popupAddPlace.querySelector('.popup__text_type_place-img');
+  if (placeName.value !== '' && placeLink.value !== '') {
+    renderCard(listOfPlaces, placeName.value, placeLink.value);
+    placeName.value = '';
+    placeLink.value = '';
     closePopup(popupAddPlace);
   }
 });
