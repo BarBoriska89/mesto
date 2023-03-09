@@ -58,50 +58,72 @@
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
 
+
+
     <div class="popup" id="popup-edit-profile">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                 <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
-            <form class="popup__form" id="edit-form">
+            <form class="popup__form" id="edit-form" name="editForm" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input type="text" value="Имя" class="popup__text popup__text_type_name" name="user-name">
-                <input type="text" value="Род деятельности" class="popup__text popup__text_type_profession"
-                    name="user-job">
-                <button class="popup__button-save" type="submit" aria-label="Сохранить изменения">Сохранить</button>
+                <div class="popup__form-section">
+                    <input type="text" value="Имя" class="popup__input popup__input_type_name" name="user-name"
+                        id="user-name" minlength="2" maxlength="40" required>
+                    <span class="popup__error" id="user-name-error"></span>
+                </div>
+                <div class="popup__form-section">
+                    <input type="text" value="Род деятельности" class="popup__input popup__input_type_profession"
+                        name="user-job" id="user-job" minlength="2" maxlength="200" required>
+                    <span class="popup__error" id="user-job-error"></span>
+                </div>
+                <button class="popup__button" type="submit" aria-label="Сохранить изменения">Сохранить</button>
             </form>
         </div>
     </div>
+
+
 
     <div class="popup" id="popup-add-place">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
                 <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
-            <form class="popup__form" id="add-place-form">
+            <form class="popup__form" id="add-place-form" name="addPlaceForm" novalidate>
                 <h2 class="popup__title">Новое место</h2>
-                <input type="text" placeholder="Название" value="" class="popup__text popup__text_type_place"
-                    name="place-name">
-                <input type="text" placeholder="Ссылка на картинку" value=""
-                    class="popup__text popup__text_type_place-img" name="place-img">
-                <button class="popup__button-save" type="submit" aria-label="Сохранить изменения">Создать</button>
+                <div class="popup__form-section">
+                    <input type="text" placeholder="Название" value="" class="popup__input popup__input_type_place"
+                        name="place-name" id="place-name" minlength="2" maxlength="30" required>
+                    <span class="popup__error" id="place-name-error"></span>
+                </div>
+
+                <div class="popup__form-section">
+                    <input type="url" placeholder="Ссылка на картинку" value=""
+                        class="popup__input popup__input_type_place-img" name="place-img" id="url-for-img" required>
+                    <span class="popup__error" id="url-for-img-error"></span>
+                </div>
+
+                <button class="popup__button" type="submit" aria-label="Сохранить изменения">Создать</button>
             </form>
         </div>
     </div>
 
     <div class="popup" id="popup-view-img">
         <div class="popup__view-container">
+            <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
+                <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+            </button>
             <figure class="popup__view">
-                <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                    <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
-                </button>
-                <img class = "popup__view-img" src="#" alt="#">
-                <figcaption class = "popup__view-img-caption"></figcaption>
+                <img class="popup__view-img" src="#" alt="#">
+                <figcaption class="popup__view-img-caption"></figcaption>
             </figure>
         </div>
     </div>
     <script src="./scritps/cards.js"></script>
-       <script src="./scritps/index.js"></script>
+    <script src="./scritps/constans.js"></script>
+    <script src="./scritps/validate.js"></script>
+    <script src="./scritps/index.js"></script>
+
 </body>
 
 </html>

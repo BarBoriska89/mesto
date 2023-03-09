@@ -1,49 +1,50 @@
-const container = document.querySelector('.profile__info');
-const userName = container.querySelector('.profile__info-name');
-const userProfession = container.querySelector('.profile__info-profession');
-const editButton = container.querySelector('.profile__info-edit-button');
-const addPlaceButton = document.querySelector('.profile__add-button');
-const closePopupButton = document.querySelectorAll('.popup__button-close');
+enableValidation(options);
 
-const popupEditProfile = document.querySelector('#popup-edit-profile');
-const popupAddPlace = document.querySelector('#popup-add-place');
-const popupViewPic = document.querySelector('#popup-view-img');
+document.addEventListener('keydown', closePopupWithEsc);
 
-const editProfileForm = document.querySelector('#edit-form');
-const addPlaceForm = document.querySelector('#add-place-form');
+function closePopupWithEsc(evt) {
+  if (evt.key === keyForClose) {
+    popupList.forEach((popup) => {
+      if (popup.classList.contains('popup_opened')) {
+        closePopup(popup);
+      }
+    });
+  }
+}
 
-const openImgContainer = document.querySelector('.popup__view');
-const popupOpenImgSrc = document.querySelector('.popup__view-img');
-const popupOpenImgName = document.querySelector('.popup__view-img-caption');
 
-const userNamePopup = popupEditProfile.querySelector('.popup__text_type_name');
-const userProfessionPopup = popupEditProfile.querySelector('.popup__text_type_profession');
-
-const saveButton = popupEditProfile.querySelector('.popup__button-save');
-
-const trashButton = document.querySelector('.element__trash');
-
-const listOfPlaces = document.querySelector('.elements__list');
-const placeTemplate = document.querySelector('#element-li').content;
-
+popupList.forEach((popup) => {
+  popup.addEventListener('click', function (evt) {
+    if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup);
+    }
+  });
+});
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWithEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupWithEsc);
+  formAddPlace.reset();
+  formEditProfile.reset();
 }
 
 function editProfile() {
   userNamePopup.value = userName.textContent;
   userProfessionPopup.value = userProfession.textContent;
+  checkForm(formEditProfile, options);
   openPopup(popupEditProfile);
+
 }
 
 
 function addPlace() {
   openPopup(popupAddPlace);
+  checkForm(formAddPlace, options);
 }
 
 
@@ -69,6 +70,7 @@ function createNewPlace(name, link) {
 
 }
 
+
 const renderCard = (arrList, name, link) => {
   arrList.prepend(createNewPlace(name, link));
 }
@@ -81,8 +83,6 @@ initialCards.forEach((elem, index) => {
 
 addPlaceForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  let placeName = popupAddPlace.querySelector('.popup__text_type_place');
-  let placeLink = popupAddPlace.querySelector('.popup__text_type_place-img');
   if (placeName.value !== '' && placeLink.value !== '') {
     renderCard(listOfPlaces, placeName.value, placeLink.value);
     placeName.value = '';
@@ -107,3 +107,4 @@ closePopupButton.forEach((closeButton) => {
     closePopup(popupForClose);
   })
 });
+
