@@ -1,4 +1,3 @@
-
 const enableValidation = (options) => {
     const forms = Array.from(document.querySelectorAll(options.formSelector));
     forms.forEach((form) => setEventListeners(form, options));
@@ -12,26 +11,24 @@ const toggleInputState = (inputElement, options) => {
 const setInputState = (inputElement, isValid, options) => {
     errorElement = findErrorElement(inputElement, options);
     if (isValid) {
-        hiddenErrorClassForInput(inputElement, options.inputErrorClass);
-        hiddenError(errorElement, options.errorClass);
+        hideErrorClassForInput(inputElement, options.inputErrorClass);
+        hideError(errorElement, options.errorClass);
     } else {
         showErrorClassForInput(inputElement, options.inputErrorClass);
         showError(errorElement, inputElement.validationMessage, options.errorClass);
-
     }
 };
 
-const hiddenErrorClassForInput = (inputElement, inputErrorClass) => inputElement.classList.remove(inputErrorClass);
+const hideErrorClassForInput = (inputElement, inputErrorClass) => inputElement.classList.remove(inputErrorClass);
 
 const showErrorClassForInput = (inputElement, inputErrorClass) => inputElement.classList.add(inputErrorClass);
 
 const checkForm = (form, options) => {
     const inputs = Array.from(form.querySelectorAll(options.inputSelector));
     const buttonElement = findButtonElementForForm(form, options);
-
     inputs.forEach((input) => {
-        hiddenErrorForInput(input, options);
-        hiddenErrorClassForInput(input, options.inputErrorClass);
+        hideErrorForInput(input, options);
+        hideErrorClassForInput(input, options.inputErrorClass);
     });
     toggleButtonState(inputs, buttonElement, options.inactiveButtonClass);
 };
@@ -47,15 +44,14 @@ const findErrorElement = (inputElement, options) => {
     return errorElement;
 };
 
-const hiddenErrorForInput = (inputElement, options) => {
+const hideErrorForInput = (inputElement, options) => {
     errorElement = findErrorElement(inputElement, options);
-    hiddenError(errorElement, options.errorClass);
+    hideError(errorElement, options.errorClass);
 };
 
 const setEventListeners = (form, options) => {
     const inputs = Array.from(form.querySelectorAll(options.inputSelector));
     const buttonElement = findButtonElementForForm(form, options);
-
     inputs.forEach(inputElement => {
         inputElement.addEventListener('input', () => {
             toggleInputState(inputElement, options);
@@ -67,7 +63,6 @@ const setEventListeners = (form, options) => {
 
 const toggleButtonState = (inputs, buttonElement, inactiveButtonClass) => {
     const formIsValid = inputs.every(inputElement => inputElement.validity.valid);
-
     if (formIsValid) {
         enableButton(buttonElement, inactiveButtonClass);
     } else {
@@ -75,7 +70,7 @@ const toggleButtonState = (inputs, buttonElement, inactiveButtonClass) => {
     }
 };
 
-const hiddenError = (errorElement, errorClass) => {
+const hideError = (errorElement, errorClass) => {
     errorElement.textContent = '';
     errorElement.classList.remove(errorClass);
 };

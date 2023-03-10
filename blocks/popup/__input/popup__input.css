@@ -2,26 +2,19 @@
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     width: 83.25%;
+    max-height: 27px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     padding: 0;
-    padding-bottom: 9px;
-    margin: 10px 36px 0 36px;
-}
-
-.popup__input:first-of-type {
-    margin: 0 36px;
+    padding-bottom: 7px;
+    margin: 0px 36px 0 36px;
 }
 
 @media (max-width: 550px) {
     .popup__input {
         width: 84.4%;
-        margin: 30px 22px 0 22px;
-    }
-
-    .popup__input:first-of-type {
-        margin: 0 22px;
+        margin: 0px 22px 0 22px;
     }
 }

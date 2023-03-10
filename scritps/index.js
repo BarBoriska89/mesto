@@ -1,17 +1,11 @@
 enableValidation(options);
 
-document.addEventListener('keydown', closePopupWithEsc);
-
 function closePopupWithEsc(evt) {
   if (evt.key === keyForClose) {
-    popupList.forEach((popup) => {
-      if (popup.classList.contains('popup_opened')) {
-        closePopup(popup);
-      }
-    });
+    const popupActive = document.querySelector('.popup_opened');
+    closePopup(popupActive);
   }
 }
-
 
 popupList.forEach((popup) => {
   popup.addEventListener('click', function (evt) {
@@ -29,24 +23,21 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupWithEsc);
-  formAddPlace.reset();
-  formEditProfile.reset();
 }
 
 function editProfile() {
+  formEditProfile.reset();
   userNamePopup.value = userName.textContent;
   userProfessionPopup.value = userProfession.textContent;
   checkForm(formEditProfile, options);
   openPopup(popupEditProfile);
-
 }
 
-
 function addPlace() {
+  formAddPlace.reset();
   openPopup(popupAddPlace);
   checkForm(formAddPlace, options);
 }
-
 
 function createNewPlace(name, link) {
   const elementPlace = placeTemplate.querySelector('.element').cloneNode(true);
@@ -67,9 +58,7 @@ function createNewPlace(name, link) {
     openPopup(popupViewPic);
   })
   return elementPlace;
-
 }
-
 
 const renderCard = (arrList, name, link) => {
   arrList.prepend(createNewPlace(name, link));
@@ -83,15 +72,12 @@ initialCards.forEach((elem, index) => {
 
 addPlaceForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (placeName.value !== '' && placeLink.value !== '') {
-    renderCard(listOfPlaces, placeName.value, placeLink.value);
-    placeName.value = '';
-    placeLink.value = '';
-    closePopup(popupAddPlace);
-  }
+  renderCard(listOfPlaces, placeName.value, placeLink.value);
+  closePopup(popupAddPlace);
 });
 
 editButton.addEventListener('click', editProfile);
+
 addPlaceButton.addEventListener('click', addPlace);
 
 editProfileForm.addEventListener('submit', (evt) => {
@@ -107,4 +93,3 @@ closePopupButton.forEach((closeButton) => {
     closePopup(popupForClose);
   })
 });
-
