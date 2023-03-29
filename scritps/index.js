@@ -1,4 +1,5 @@
 import initialCards from './cards.js';
+import options from './validationConfig.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
@@ -19,26 +20,29 @@ const userProfessionPopup = popupEditProfile.querySelector('.popup__input_type_p
 const listOfPlaces = document.querySelector('.elements__list');
 const placeName = popupAddPlace.querySelector('.popup__input_type_place');
 const placeLink = popupAddPlace.querySelector('.popup__input_type_place-img');
+const popupViewPic = document.querySelector('#popup-view-img');
+const popupOpenImgSrc = document.querySelector('.popup__view-img');
+const popupOpenImgName = document.querySelector('.popup__view-img-caption');
 const keyForClose = 'Escape';
 const formEditProfile = document.forms.editForm;
 const formAddPlace = document.forms.addPlaceForm;
 const formsForValidate = Array.from(document.querySelectorAll('.popup__form'));
-const options = {
-  formSelector: '.popup__form',
-  formSectionClass: '.popup__form-section',
-  submitButtonSelector: '.popup__button',
-  inputSelector: '.popup__input',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorSelector: '.popup__error',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
 
+const validators = {};
 
 formsForValidate.forEach((form) => {
-  const formForValidate = new FormValidator(options, form);
-  formForValidate.enableValidation();
+  const formValidator = new FormValidator(options, form);
+  validators[form.getAttribute('name')] = formValidator;
+  formValidator.enableValidation();
 });
+
+export function openPopupViewCard(name, link) {
+
+  popupOpenImgSrc.src = link;
+  popupOpenImgSrc.alt = name;
+  popupOpenImgName.textContent = name;
+  openPopup(popupViewPic);
+}
 
 
 function closePopupWithEsc(evt) {
@@ -70,36 +74,34 @@ function editProfile() {
   formEditProfile.reset();
   userNamePopup.value = userName.textContent;
   userProfessionPopup.value = userProfession.textContent;
-  const formForValidate = new FormValidator(options, formEditProfile);
-  formForValidate.checkForm(formEditProfile);
+  validators[formEditProfile.getAttribute('name')].checkForm();
   openPopup(popupEditProfile);
 }
 
 function addPlace() {
   formAddPlace.reset();
-  const formForValidate = new FormValidator(options, formAddPlace);
-  formForValidate.checkForm(formAddPlace);
+  validators[formAddPlace.getAttribute('name')].checkForm();
   openPopup(popupAddPlace);
 }
 
-const createNewPlace = (name, link, templateSelector, openFunc) => {
-  const card = new Card(name, link, templateSelector, openFunc);
+const createNewPlace = (name, link, templateSelector, openFunc, viewCardFunc) => {
+  const card = new Card(name, link, templateSelector, openFunc, viewCardFunc);
   return card.generateCard();
 }
 
-const renderCard = (arrList, name, link, templateSelector, openFunc) => {
-  arrList.prepend(createNewPlace(name, link, templateSelector, openFunc));
+const renderCard = (cardsContainer, name, link, templateSelector, openFunc, viewCardFunc) => {
+  cardsContainer.prepend(createNewPlace(name, link, templateSelector, openFunc, viewCardFunc));
 }
 
-initialCards.forEach((elem, index) => {
-  const namePlace = initialCards[index].name;
-  const linkPlace = initialCards[index].link;
-  renderCard(listOfPlaces, namePlace, linkPlace, '#element-li', openPopup);
+initialCards.forEach((elem) => {
+  const namePlace = elem.name;
+  const linkPlace = elem.link;
+  renderCard(listOfPlaces, namePlace, linkPlace, '#element-li', openPopup, openPopupViewCard);
 })
 
 addPlaceForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  renderCard(listOfPlaces, placeName.value, placeLink.value, '#element-li', openPopup);
+  renderCard(listOfPlaces, placeName.value, placeLink.value, '#element-li', openPopup, openPopupViewCard);
   closePopup(popupAddPlace);
 });
 
@@ -116,7 +118,7 @@ editProfileForm.addEventListener('submit', (evt) => {
 
 closePopupButton.forEach((closeButton) => {
   closeButton.addEventListener('click', (evt) => {
-    const popupForClose = document.querySelector(`#${evt.target.closest('.popup').id}`);
+    const popupForClose = evt.target.closest('.popup');
     closePopup(popupForClose);
   })
 });

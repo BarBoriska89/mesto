@@ -14,10 +14,10 @@ export default class FormValidator {
         this._inputs.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._toggleInputState(inputElement);
-                this._toggleButtonState(this._inputs, this._buttonElement, this._options.inactiveButtonClass);
+                this._toggleButtonState();
             });
         });
-        this._toggleButtonState(this._inputs, this._buttonElement, this._options.inactiveButtonClass);
+        this._toggleButtonState();
     }
 
     _toggleInputState(inputElement) {
@@ -26,20 +26,20 @@ export default class FormValidator {
     }
 
     _setInputState(inputElement, isValid) {
-        this._errorElement = this._findErrorElement(inputElement, this._options);
+        const errorElement = this._findErrorElement(inputElement);
         if (isValid) {
             this._hideErrorClassForInput(inputElement, this._options.inputErrorClass);
-            this._hideError(this._errorElement, this._options.errorClass);
+            this._hideError(errorElement);
         } else {
             this._showErrorClassForInput(inputElement, this._options.inputErrorClass);
-            this._showError(inputElement, inputElement.validationMessage, this._options.errorClass);
+            this._showError(errorElement, inputElement.validationMessage, this._options.errorClass);
         }
     }
 
     _findErrorElement(inputElement) {
         const inputSectionElement = inputElement.closest(this._options.formSectionClass);
-        this._errorElement = inputSectionElement.querySelector(this._options.inputErrorSelector);
-        return this._errorElement;
+        const errorSpanElement = inputSectionElement.querySelector(this._options.inputErrorSelector);
+        return errorSpanElement;
     }
 
     _hideErrorClassForInput(inputElement, inputErrorClass) {
@@ -50,36 +50,36 @@ export default class FormValidator {
         inputElement.classList.add(inputErrorClass);
     }
 
-    checkForm(form) {
-        Array.from(form.querySelectorAll(this._options.inputSelector)).forEach((input) => {
+    checkForm() {
+        this._inputs.forEach((input) => {
             this._hideErrorForInput(input);
             this._hideErrorClassForInput(input, this._options.inputErrorClass);
         });
-        this._toggleButtonState(this._inputs, this._buttonElement, this._options.inactiveButtonClass);
+        this._toggleButtonState();
     }
 
     _hideErrorForInput(input) {
-        this._errorElement = this._findErrorElement(input);
-        this._hideError(this._errorElement, this._options.errorClass);
+        const errorElement = this._findErrorElement(input);
+        this._hideError(errorElement, this._options.errorClass);
     }
 
     _toggleButtonState() {
         const formIsValid = this._inputs.every(inputElement => inputElement.validity.valid);
         if (formIsValid) {
-            this._enableButton(this._buttonElement, this._options.inactiveButtonClass);
+            this._enableButton();
         } else {
-            this._disableButton(this._buttonElement, this._options.inactiveButtonClass);
+            this._disableButton();
         }
     }
 
-    _hideError() {
-        this._errorElement.textContent = '';
-        this._errorElement.classList.remove(this._options.errorClass);
+    _hideError(errorElement) {
+        errorElement.textContent = '';
+        errorElement.classList.remove(this._options.errorClass);
     }
 
-    _showError(inputElement, validationMessage) {
-        this._errorElement.textContent = validationMessage;
-        this._errorElement.classList.add(this._options.errorClass);
+    _showError(errorElement, validationMessage) {
+        errorElement.textContent = validationMessage;
+        errorElement.classList.add(this._options.errorClass);
     }
 
     _enableButton() {
