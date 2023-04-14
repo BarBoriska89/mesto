@@ -7,32 +7,32 @@
     <meta name="description" content="Хранилище интересных мест России">
     <meta name="keywords" content="Фотографии живописных мест России">
     <meta name="author" content="Надежда Борисова">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!--<link rel="stylesheet" href="./pages/index.css">-->
     <title>Место</title>
 </head>
 
 <body class="root">
     <header class="header">
         <a href="#" class="header__link">
-            <img src="./images/logo-white.svg" class="header__logo" alt="Логотип Место">
+            <img src="<%=require('./images/logo-white.svg')%>" class="header__logo" alt="Логотип Место">
         </a>
     </header>
     <main>
         <section class="profile" aria-label="Профиль пользователя">
-            <img src="./images/ricky-kharawala-adK3Vu70DEQ-unsplash.jpg" class="profile__avatar"
+            <img src="<%=require('./images/ricky-kharawala-adK3Vu70DEQ-unsplash.jpg')%>" class="profile__avatar"
                 alt="Фото пользователя">
             <div class="profile__info">
                 <div class="profile__info-wrapper">
                     <h1 class="profile__info-name">Жак-Ив Кусто</h1>
                     <button class="profile__info-edit-button button" type="button" aria-label="Редактировать профиль">
-                        <img src="./images/Edit-Button.svg" class="profile__info-button-img"
+                        <img src="<%=require('./images/Edit-Button.svg')%>" class="profile__info-button-img"
                             alt="Изображение карандаша">
                     </button>
                 </div>
                 <h2 class="profile__info-profession">Исследователь океана</h2>
             </div>
             <button class="profile__add-button button" type="button" aria-label="Добавить фото">
-                <img src="./images/plus.svg" class="profile__add-button-img" alt="Плюс">
+                <img src="<%=require('./images/plus.svg')%>" class="profile__add-button-img" alt="Плюс">
             </button>
         </section>
 
@@ -61,7 +61,7 @@
     <div class="popup" id="popup-edit-profile">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
             <form class="popup__form" id="edit-form" name="editForm" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -83,14 +83,14 @@
     <div class="popup" id="popup-add-place">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
             <form class="popup__form" id="add-place-form" name="addPlaceForm" novalidate>
                 <h2 class="popup__title">Новое место</h2>
                 <div class="popup__form-section">
                     <input type="text" placeholder="Название" class="popup__input popup__input_type_place"
-                        name="place-name" id="place-name" minlength="2" maxlength="30" required>
-                    <span class="popup__error" id="place-name-error"></span>
+                        name="place-title" id="place-name" minlength="2" maxlength="30" required>
+                    <span class="popup__error" id="place-title-error"></span>
                 </div>
                 <div class="popup__form-section">
                     <input type="url" placeholder="Ссылка на картинку" 
@@ -105,7 +105,7 @@
     <div class="popup popup_overlay" id="popup-view-img">
         <div class="popup__view-container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="./images/Close-Icon.png" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
             </button>
             <figure class="popup__view">
                 <img class="popup__view-img" src="#" alt="#">
@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <script type="module" src="./scritps/index.js"></script>
+    <!--<script type="module" src="./scripts/index.js"></script>-->
 
 </body>
 
