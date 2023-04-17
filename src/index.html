@@ -7,7 +7,6 @@
     <meta name="description" content="Хранилище интересных мест России">
     <meta name="keywords" content="Фотографии живописных мест России">
     <meta name="author" content="Надежда Борисова">
-    <!--<link rel="stylesheet" href="./pages/index.css">-->
     <title>Место</title>
 </head>
 
@@ -61,7 +60,8 @@
     <div class="popup" id="popup-edit-profile">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна"
+                    class="popup__button-close-img">
             </button>
             <form class="popup__form" id="edit-form" name="editForm" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -83,7 +83,8 @@
     <div class="popup" id="popup-add-place">
         <div class="popup__container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна"
+                    class="popup__button-close-img">
             </button>
             <form class="popup__form" id="add-place-form" name="addPlaceForm" novalidate>
                 <h2 class="popup__title">Новое место</h2>
@@ -93,8 +94,8 @@
                     <span class="popup__error" id="place-title-error"></span>
                 </div>
                 <div class="popup__form-section">
-                    <input type="url" placeholder="Ссылка на картинку" 
-                        class="popup__input popup__input_type_place-img" name="place-img" id="url-for-img" required>
+                    <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-img"
+                        name="place-img" id="url-for-img" required>
                     <span class="popup__error" id="url-for-img-error"></span>
                 </div>
                 <button class="popup__button" type="submit" aria-label="Сохранить изменения">Создать</button>
@@ -105,7 +106,8 @@
     <div class="popup popup_overlay" id="popup-view-img">
         <div class="popup__view-container">
             <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
-                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна" class="popup__button-close-img">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна"
+                    class="popup__button-close-img">
             </button>
             <figure class="popup__view">
                 <img class="popup__view-img" src="#" alt="#">
@@ -113,8 +115,6 @@
             </figure>
         </div>
     </div>
-
-    <!--<script type="module" src="./scripts/index.js"></script>-->
 
 </body>
 

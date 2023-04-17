@@ -3,7 +3,6 @@ export default class Card {
         this._templateSelector = templateSelector;
         this._name = name;
         this._link = link;
-        this._openPopup = openPopup;
         this._handleCardClick = handleCardClick;
     }
 

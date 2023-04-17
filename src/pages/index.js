@@ -1,12 +1,12 @@
 import '../pages/index.css';
-import initialCards from './cards.js';
-import options from './validationConfig.js';
-import Card from './Card.js';
-import Section from './Section.js';
-import UserInfo from './UserInfo.js';
-import FormValidator from './FormValidator.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
+import initialCards from '../scripts/cards.js';
+import options from '../scripts/validationConfig.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
 import {
   container,
@@ -20,7 +20,7 @@ import {
   formAddPlace,
   formsForValidate,
   validators
-} from './constants.js';
+} from '../scripts/constants.js';
 
 
 const editUserInfo = new UserInfo({
@@ -38,16 +38,14 @@ const popupEditProfile = new PopupWithForm({
     popupEditProfile.close();
   }
 });
+popupEditProfile.setEventListeners();
 
 function editProfile() {
-  formEditProfile.reset();
   userNamePopup.value = editUserInfo.getUserInfo().name;
   userProfessionPopup.value = editUserInfo.getUserInfo().about;
   validators[formEditProfile.getAttribute('name')].checkForm();
   popupEditProfile.open();
-  popupEditProfile.setEventListeners();
-}
-
+  }
 
 const popupAddPlace = new PopupWithForm({
   popupSelector: '#popup-add-place',
@@ -56,18 +54,20 @@ const popupAddPlace = new PopupWithForm({
     popupAddPlace.close();
   }
 });
+popupAddPlace.setEventListeners();
 
 function addPlace() {
   formAddPlace.reset();
   validators[formAddPlace.getAttribute('name')].checkForm();
   popupAddPlace.open();
-  popupAddPlace.setEventListeners();
+ 
 }
+const popupViewCard = new PopupWithImage({ popupSelector: '#popup-view-img' });
+popupViewCard.setEventListeners();
 
 export function handleCardClick(name, link) {
-  const popupViewCard = new PopupWithImage({ popupSelector: '#popup-view-img' });
   popupViewCard.open(name, link);
-  popupViewCard.setEventListeners();
+ 
 }
 
 const renderCardList = new Section({
