@@ -18,12 +18,17 @@
     </header>
     <main>
         <section class="profile" aria-label="Профиль пользователя">
-            <img src="<%=require('./images/ricky-kharawala-adK3Vu70DEQ-unsplash.jpg')%>" class="profile__avatar"
-                alt="Фото пользователя">
+            <div class="section__avatar">
+                <img src="<%=require('./images/ricky-kharawala-adK3Vu70DEQ-unsplash.jpg')%>" class="profile__avatar"
+                    alt="Фото пользователя">
+                <div class="profile__overlay">
+                </div>
+            </div>
             <div class="profile__info">
                 <div class="profile__info-wrapper">
-                    <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-                    <button class="profile__info-edit-button button" type="button" aria-label="Редактировать профиль">
+                    <h1 class="profile__info-name">Пионер Николай</h1>
+                    <button class="profile__info-edit-button button" type="button"
+                        aria-label="Редактировать профиль rnj ns">
                         <img src="<%=require('./images/Edit-Button.svg')%>" class="profile__info-button-img"
                             alt="Изображение карандаша">
                     </button>
@@ -44,8 +49,11 @@
                         </button>
                         <div class="element__caption">
                             <h2 class="element__text">#</h2>
-                            <button class="element__like" type="button" aria-label="Нравится">
-                            </button>
+                            <div class="section__like">
+                                <button class="element__like" type="button" aria-label="Нравится">
+                                </button>
+                                <span class="element__like-count">#</span>
+                            </div>
                         </div>
                     </li>
                 </template>
@@ -113,6 +121,37 @@
                 <img class="popup__view-img" src="#" alt="#">
                 <figcaption class="popup__view-img-caption"></figcaption>
             </figure>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-delete-place">
+        <div class="popup__container">
+            <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна"
+                    class="popup__button-close-img">
+            </button>
+            <form class="popup__form" id="delete-place-form" name="deletePlaceForm" novalidate>
+                <h2 class="popup__title">Вы уверены?</h2>
+                <button class="popup__button" type="submit" aria-label="Удалить">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-edit-avatar">
+        <div class="popup__container">
+            <button class="popup__button-close button" type="button" aria-label="Закрыть окно">
+                <img src="<%=require('./images/Close-Icon.png')%>" alt="Крестик закрытия окна"
+                    class="popup__button-close-img">
+            </button>
+            <form class="popup__form" id="edit-avatar-form" name="editAvatarForm" novalidate>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <div class="popup__form-section">
+                    <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-img"
+                        name="avatar-img" id="url-for-img" required>
+                    <span class="popup__error" id="url-for-img-error"></span>
+                </div>
+                <button class="popup__button" type="submit" aria-label="Сохранить изменения">Сохранить</button>
+            </form>
         </div>
     </div>
 
