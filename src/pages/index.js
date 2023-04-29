@@ -29,7 +29,7 @@ let userId;
 let cardForDelete;
 let renderCardList;
 
-const api = new Api({ optionsApi });
+const api = new Api(optionsApi);
 
 const promises = [api.getUser(), api.getCards()];
 
